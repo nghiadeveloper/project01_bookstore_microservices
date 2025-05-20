@@ -1,0 +1,14 @@
+server:
+  port: 8080
+
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3307/bookstore
+    username: root
+    password: admin123
+  jpa:
+    hibernate:
+      ddl-auto: none
+
+jwt:
+  secret: FoT8f674lxf9gi05IrgdR7uWhLk9ngSqacW/fc2efKk=
