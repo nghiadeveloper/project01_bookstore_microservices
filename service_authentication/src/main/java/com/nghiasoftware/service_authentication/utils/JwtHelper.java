@@ -14,24 +14,21 @@ import javax.crypto.SecretKey;
 public class JwtHelper {
 
     @Value("${jwt.secret}")
-    private String secret;
+    private String secretKey;
 
-    public String generateToken(String data) {
-        SecretKey key = Keys.hmacShaKeyFor(Decoders.BASE64.decode(secret));
-        return Jwts.builder().subject(data).signWith(key).compact();
+    public String generateToken(Object data) {
+        // Logic to generate JWT token using username
+        // This is a placeholder implementation
+        SecretKey key = Keys.hmacShaKeyFor(Decoders.BASE64.decode(secretKey));
+        return io.jsonwebtoken.Jwts.builder()
+                .subject("Hello")
+                .signWith(key)
+                .compact();
     }
 
-    public String decodeToken(String token) {
-        SecretKey key = Keys.hmacShaKeyFor(Decoders.BASE64.decode(secret));
-        String data = null;
-        try{
-            data = Jwts.parser().verifyWith(key).build().parseSignedClaims(token).getPayload().getSubject();
-        }catch (ExpiredJwtException e){
-            System.out.println("Token Expired");
-        }catch (JwtException e){
-            System.out.println("Decode Error");
-        }
-        return data;
+    public String validateAndGetDataToken(String token) {
+        SecretKey key = Keys.hmacShaKeyFor(Decoders.BASE64.decode(secretKey));
+        return Jwts.parser().verifyWith(key).build().parseSignedClaims(token).getPayload().getSubject();
     }
 
 }

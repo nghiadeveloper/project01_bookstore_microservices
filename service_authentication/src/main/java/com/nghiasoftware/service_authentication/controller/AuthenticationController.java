@@ -1,5 +1,6 @@
 package com.nghiasoftware.service_authentication.controller;
 
+import com.nghiasoftware.service_authentication.payload.request.AuthenticationRequest;
 import com.nghiasoftware.service_authentication.payload.response.BaseResponse;
 import com.nghiasoftware.service_authentication.services.AuthenticationServices;
 import io.jsonwebtoken.Jwts;
@@ -19,10 +20,12 @@ public class AuthenticationController {
     private AuthenticationServices authenticationServices;
 
     @PostMapping("/sign-in")
-    public ResponseEntity<?> signIn(@RequestParam String email, @RequestParam String password) {
-        String token = authenticationServices.authenticate(email, password);
-
+    public ResponseEntity<?> signIn(@RequestBody AuthenticationRequest authenticationRequest) {
+        // Logic for user login
+        String token = authenticationServices.signIn(authenticationRequest.getEmail(), authenticationRequest.getPassword());
         BaseResponse response = new BaseResponse();
+        response.setCode(200);
+        response.setMessage("Login successful");
         response.setData(token);
 
         return ResponseEntity.ok(response);
