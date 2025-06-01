@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: service-product
+
+  datasource:
+    url: jdbc:mysql://localhost:3307/bookstore
+    username: root
+    password: admin123
+  jpa:
+    hibernate:
+      ddl-auto: none
+    show-sql: true
