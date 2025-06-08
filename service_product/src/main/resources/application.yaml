@@ -10,3 +10,6 @@ spring:
     hibernate:
       ddl-auto: none
     show-sql: true
+
+file:
+  path: C:\Users\Admin\Downloads\bookstore_project\uploads
