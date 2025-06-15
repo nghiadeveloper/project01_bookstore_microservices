@@ -11,6 +11,10 @@ spring:
       ddl-auto: none
     show-sql: true
 
+jwt:
+  secret: FoT8f674lxf9gi05IrgdR7uWhLk9ngSqacW/fc2efKk=
+
+
 #  datasource:
 #    hikari:
 #      jdbc-url: jdbc:mysql://localhost:3307/bookstore
@@ -26,6 +30,3 @@ spring:
 #      hibernate:
 #        ddl-auto: none
 #      database-platform: com.mysql.cj.jdbc.Driver
-
-jwt:
-  secret: FoT8f674lxf9gi05IrgdR7uWhLk9ngSqacW/fc2efKk=
