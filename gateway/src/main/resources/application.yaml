@@ -10,12 +10,15 @@ spring:
         webmvc:
           routes:
             - id: service_product
-              uri: http://localhost:8082
+              uri: lb://SERVICE_PRODUCT
               predicates:
                 - Path=/products/**
 
             - id: service_authentication
-              uri: http://localhost:8080
+              uri: lb://SERVICE_AUTHENTICATION
               predicates:
                 - Path=/auth/**
-
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
